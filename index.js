@@ -20,7 +20,6 @@ module.exports = {
       if(exConfig && exConfig.hidePoweredBy) {
         page.content = page.content.replace("，powered by Gitbook", "")
       }
-      console.log(this)
       return page;
     },
     "finish": function () {
