@@ -1,6 +1,6 @@
 {
     "name": "gitbook-plugin-pre-html",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "用来自定义样式的",
     "engines": {
         "honkit": ">1.x.x",
