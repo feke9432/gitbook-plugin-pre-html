@@ -2,18 +2,22 @@ require(['gitbook', 'jQuery'], function(gitbook, $) {
   function init() {
     var homePageEl = document.querySelector('[data-level="1.1"] a');
     if (homePageEl) {
-      homePageEl.href = homePageEl.href + 'index.html';
+      if (!/index\.html$/.test(homePageEl.href)) {
+        homePageEl.href = homePageEl.href + 'index.html';
+      }
     }
   }
   var isFileLink = false;
+  var preHtmlConfig = {}
   gitbook.events.bind('start', function (e, config) {
-    isFileLink = config['pre-html']['file-link'];
-    if (isFileLink) {
-      init()
+    if (config['pre-html']) {
+      preHtmlConfig = config['pre-html']
     }
   });
+  // page.change 拿不到 config 信息，需要在start事件中拿
   gitbook.events.bind('page.change', function () {
-    if (isFileLink) {
+    isFileLink = preHtmlConfig['file-link'];
+    if (isFileLink ) {
       init()
     }
   });
