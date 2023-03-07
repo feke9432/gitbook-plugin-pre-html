@@ -32,11 +32,9 @@ module.exports = {
     pre: {
       process: function(block) {
         let kwArgs = block.kwargs;
-        let elTag = 'p'
-        if (kwArgs['pre-html']) {
-          if (kwArgs['pre-html'].elTag) {
-            elTag = kwArgs['pre-html'].elTag
-          }
+        let elTag = 'p';
+        if (kwArgs) {
+          elTag = kwArgs['name'];
         }
         let args = block.args;
         let styleStr = 'font-size: 2em; font-weight: 700;';
