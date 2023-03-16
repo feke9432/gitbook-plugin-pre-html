@@ -6,6 +6,12 @@ require(['gitbook', 'jQuery'], function(gitbook, $) {
         homePageEl.href = homePageEl.href + 'index.html';
       }
     }
+    let homePageEls = document.querySelectorAll('[href="../"]');
+    homePageEls.forEach(urlEl => {
+      if (!/index\.html$/.test(urlEl.href)) {
+        urlEl.href = urlEl.href + 'index.html';
+      }
+    })
   }
   var isFileLink = false;
   var preHtmlConfig = {}
